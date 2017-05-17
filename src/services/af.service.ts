@@ -46,6 +46,33 @@ export class AngularFireService {
         // })
     }
 
+    getList(URL: string){
+        return this.db.list(URL);
+    }
+
+    addItem2List(URLofList: string, value: any){
+        return this.db.list(URLofList).push(value);
+    }
+
+    updateItemInList(URLofList: string, key: string,  value: any){
+        return this.db.list(URLofList).update(key, value);
+    }
+
+    deleteItemFromList(URLofList: string, key: string){
+        return this.db.list(URLofList).remove(key);
+    }
+
+    getListSnapshots(URL: string){
+        return this.db.list(URL, { preserveSnapshot: true})
+        // .subscribe(snapshots=>{
+        //     snapshots.forEach(snapshot=>{
+        //         console.log(snapshot.key);
+        //         console.log(snapshot.val());
+        //     })
+        // })
+        
+    }
+
 
 
 
